@@ -1,0 +1,60 @@
+/*
+ *   -------------------------------------------------------------------------
+ *    HgtResizer v1.0
+ *                                                    (c) Robert Rypula 156520
+ *                                   Wroclaw University of Technology - Poland
+ *                                                      http://www.pwr.wroc.pl
+ *                                                           2011.01 - 2011.06
+ *   -------------------------------------------------------------------------
+ *
+ *   What is this:
+ *     - SRTM data resizer from 92.77m to 101.92m grid for more flexible LOD
+ *       division in HgtReader program
+ *     - html HGT index generator with jpg terrain presentation
+ *     - part of my thesis "Rendering of complex 3D scenes"
+ *
+ *   What it use:
+ *     - Nokia Qt cross-platform C++ application framework
+ *     - NASA SRTM terrain elevation data:
+ *         oryginal dataset
+ *           http://dds.cr.usgs.gov/srtm/version2_1/SRTM3/
+ *         corrected part of earth:
+ *           http://www.viewfinderpanoramas.org/dem3.html
+ *         SRTM v4 highest quality SRTM dataset avaiable:
+ *           http://srtm.csi.cgiar.org/
+ *     - ALGLIB cross-platform numerical analysis and data processing library
+ *         ALGLIB website:
+ *           http://www.alglib.net/
+ *
+ *   Contact to author:
+ *            phone    +48 505-363-331
+ *            e-mail   robert.rypula@gmail.com
+ *            GG       1578139
+ *
+ *                                                   program under GNU licence
+ *   -------------------------------------------------------------------------
+ */
+
+#include "CAvability.h"
+
+
+CAvability::CAvability()
+{
+    available = false;
+    name = 0;
+}
+
+CAvability::~CAvability()
+{
+    if (name!=0)
+        delete name;
+}
+
+void CAvability::setAvailable(const QString &n)
+{
+    if (name==0)
+        name = new QString(n); else
+        (*name) = n;
+
+    available = true;
+}
